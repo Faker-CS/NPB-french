@@ -18,6 +18,8 @@ type SectionIntroProps = {
   eyebrow: ReactNode;
   title: ReactNode;
   description?: ReactNode;
+  /** Replaces the paragraph when the right-hand side is not a paragraph (regions: a short list). */
+  aside?: ReactNode;
   layout?: SectionIntroLayout;
   tone?: "light" | "dark";
   eyebrowTone?: EyebrowTone;
@@ -36,6 +38,7 @@ export function SectionIntro({
   eyebrow,
   title,
   description,
+  aside,
   layout = "center",
   tone = "light",
   eyebrowTone = "brand",
@@ -58,7 +61,7 @@ export function SectionIntro({
       {title}
     </h2>
   );
-  const paragraph = description ? (
+  const paragraph = aside ?? (description ? (
     <p
       className={cn(
         "px-4 py-2 font-medium",
@@ -69,7 +72,7 @@ export function SectionIntro({
     >
       {description}
     </p>
-  ) : null;
+  ) : null);
 
   return (
     <div className={cn("flex flex-col gap-2", layout === "center" ? "items-center" : "items-start", className)}>

@@ -126,6 +126,7 @@
   --blur-sparkle: 2px;
   --blur-tyre: 1px;
   --blur-banknote: 1.4px;
+  --blur-banknote-sm: 1.3px;
 
   /* Hover / focus feedback (not designed in Figma; approved default, see PROGRESS.md) */
   --default-transition-duration: 200ms;
@@ -135,6 +136,14 @@
 /* Footer "NESS PARE BRISE" watermark (31:4466): vertical gradient, accent-bright → transparent brand at 67.6 %. */
 @utility text-gradient-footer {
   background-image: linear-gradient(to bottom, var(--color-accent-bright) 0%, rgb(47 160 166 / 0) 67.6%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* "Unlimited rewards" watermark (31:4100): vertical gradient, ink → white at 75 % of each line. */
+@utility text-gradient-rewards {
+  background-image: linear-gradient(to bottom, var(--color-ink) 0%, var(--color-white) 75.2%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

@@ -161,3 +161,92 @@ export const why = {
   ],
   cta: "Prendre rendez-vous",
 };
+
+export const repairOrReplace = {
+  eyebrow: "Réparer ou remplacer ?",
+  title: "PETIT IMPACT ? RÉPAREZ-LE.\nVERRE CRAQUÉ ? REMPLACEZ-LE.",
+  description:
+    "Petit impact ? Nous le réparerons rapidement. Verre craqué ? Nous le remplacerons en toute sécurité et de manière professionnelle.",
+  repair: {
+    title: "Réparation",
+    subtitle: "La règle des 3–2–1",
+    points: ["Moins de 3 impacts.", "Plus petit qu'une pièce de 2 €.", "En dehors du champ de vision direct du conducteur."],
+    duration: "Environ 30 minutes.",
+    image: { src: "/images/repair-impact.webp", alt: "Réparation d'un impact sur un pare-brise" },
+  },
+  replace: {
+    title: "Remplacement",
+    // Both column titles read "Peut être nécessaire lorsque :" in Figma (PROGRESS.md, D8).
+    columns: [
+      {
+        subtitle: "Peut être nécessaire lorsque :",
+        points: [
+          "Il y a une fissure",
+          "L'impact est plus grand qu'une pièce de 2 €",
+          "Les dommages sont dans le champ de vision du conducteur",
+          "Les dommages sont proches du bord du verre",
+        ],
+      },
+      {
+        subtitle: "Peut être nécessaire lorsque :",
+        points: ["Sécurité", "Intégrité structurelle restaurée", "Visibilité améliorée", "Calibration ADAS si nécessaire"],
+      },
+    ],
+    image: { src: "/images/replace-windshield.webp", alt: "Remplacement d'un pare-brise en atelier" },
+  },
+  unsure: { title: "Pas sûr ?", text: "Laissez nos spécialistes évaluer votre pare-brise." },
+  cta: "Prendre rendez-vous",
+};
+
+export const needHelp = {
+  eyebrow: "Besoin d'aide ?",
+  title: "PRÊT À REPRENDRE LA ROUTE ?",
+  description: "Dites-nous ce qui s'est passé. Notre équipe est là pour vous aider à trouver la bonne solution en verre.",
+  // Figma has no targets: booking form, centre finder, phone (PROGRESS.md, D11).
+  actions: [
+    { icon: "calendar", label: "Réservez en ligne", href: "#contact" },
+    { icon: "pin", label: "Trouvez un centre", href: "#centres" },
+    { icon: "chat", label: "Parlez à un conseiller", href: "tel:+33000000000" },
+  ],
+  signature: { name: "NESS PARE-BRISE", tagline: "Votre expert en verre automobile." },
+} as const;
+
+export const rewards = {
+  watermark: "Unlimited rewards",
+  // "RENVOI" kept verbatim (PROGRESS.md, D8).
+  title: "RECEVEZ 40 € POUR CHAQUE RENVOI !",
+  text: "Un supplément de 40 € pour chaque 4 renvois (pour un total de 200 €)",
+  payment: "MÉTHODE DE PAIEMENT : VIREMENT BANCAIRE",
+  cta: "Profitez d'une remise allant jusqu'à 50 %",
+};
+
+export const articles = {
+  eyebrow: "Experts en verre automobile",
+  title: "CONNAISSEZ VOTRE VERRE. CONDUISEZ EN CONFIANCE.",
+  description: "Comprenez votre pare-brise, choisissez la bonne solution et conduisez en toute confiance.",
+  readMore: "Lire l'article →",
+  all: "Voir tous les articles",
+  // Article pages are out of scope (PROGRESS.md, D3); the three excerpts are identical in Figma (D8).
+  items: [
+    { label: "Article 01", category: "Assurance", title: "PARE-BRISE CRAQUÉ ?", image: "/images/article-insurance.webp", alt: "Conseillère remettant un document d'assurance à un client" },
+    { label: "Article 02", category: "Réparation", title: "RÉPARATION D'IMPACT", image: "/images/article-impact-repair.webp", alt: "Technicien réparant un impact sur un pare-brise" },
+    { label: "Article 03", category: "Sécurité", title: "INSPECTION DU VÉHICULE", image: "/images/article-inspection.webp", alt: "Technicien inspectant le pare-brise d'un véhicule" },
+  ],
+  excerpt: "Couverture d'assurance et que faire en cas de dommages.",
+};
+
+export const coverage = {
+  eyebrow: "Où nous intervenons",
+  title: "SERVICE DE VERRE PROFESSIONNEL À TRAVERS LA FRANCE.",
+  highlights: ["Service Rapide", "Soutien à l'Assurance", "Service Mobile"],
+  // Label kept verbatim from Figma (PROGRESS.md, D8).
+  cta: "Voir tous les articles",
+  images: {
+    "South-West": "/images/region-south-west.webp",
+    Pyrenees: "/images/region-pyrenees.webp",
+    "Central France": "/images/region-central-france.webp",
+    North: "/images/region-north.webp",
+    "Île-de-France": "/images/region-ile-de-france.webp",
+    "South-East": "/images/region-south-east.webp",
+  } as Record<string, string>,
+};
