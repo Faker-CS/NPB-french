@@ -12,7 +12,7 @@ const frame = { width: 134, height: 141 }; // "Component 48" (1:1143), clipped
 // "image 34" … "image 37" at their start position (1:1164).
 const tyres = [
   { x: 10, y: tyreStackStates[0][0], width: 52, height: 62, rotate: -23.46, blur: false },
-  { x: 121.31, y: tyreStackStates[0][1], width: 40, height: 48, rotate: -167.99, blur: false },
+  { x: 121.31, y: tyreStackStates[0][1] + 30, width: 40, height: 48, rotate: -167.99, blur: false },
   { x: 43, y: tyreStackStates[0][2], width: 25, height: 30, rotate: -12.01, blur: false },
   { x: 43, y: tyreStackStates[0][3], width: 96, height: 115, rotate: -12.01, blur: true },
 ];

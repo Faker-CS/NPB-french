@@ -42,11 +42,12 @@ export function AccordionItem({ question, answer, defaultOpen = false, className
           <span className="flex-1 px-4 py-2 text-title leading-faq font-medium text-ink uppercase">{question}</span>
           <motion.span
             className="shrink-0 transition-[filter] group-hover:brightness-90"
+            style={{ transformPerspective: 400 }}
             initial={false}
-            animate={{ rotate: open ? faqChevron.open : faqChevron.closed }}
+            animate={{ rotateX: open ? 180 : 0 }}
             transition={faqTransition}
           >
-            <ArrowIcon variant="brand" />
+            <ArrowIcon variant="brand" direction="down"/>
           </motion.span>
         </button>
       </h3>

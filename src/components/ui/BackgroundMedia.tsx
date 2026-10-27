@@ -21,27 +21,40 @@ type BackgroundMediaProps = {
  * Figma VIDEO fill ("FILL" scale mode = object-cover): the poster, with the muted looping video on top
  * once supplied. With reduced motion the video is hidden and the poster stays.
  */
-export function BackgroundMedia({ media, sizes, priority = false, className }: BackgroundMediaProps) {
+export function BackgroundMedia({
+  media,
+  sizes,
+  priority = false,
+  className,
+}: BackgroundMediaProps) {
   return (
     <>
-      <Image
-        src={media.poster}
-        alt={media.alt}
-        fill
-        sizes={sizes}
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
-        className={cn("object-cover", className)}
-      />
-      {media.video && (
         <video
-          className={cn("absolute inset-0 size-full object-cover motion-reduce:hidden", className)}
-          src={media.video}
-          poster={media.poster}
+          className={cn(
+            "absolute inset-0 size-full object-cover motion-reduce:hidden",
+            className
+          )}
+          src={media.poster}
           autoPlay
           muted
           loop
           playsInline
+          preload={priority ? "auto" : "metadata"}
+          aria-hidden="true"
+        />
+      {media.video && (
+        <video
+          className={cn(
+            "absolute inset-0 size-full object-cover motion-reduce:hidden",
+            className
+          )}
+          src={media.video}
+          poster={media.poster.endsWith(".mp4") ? undefined : media.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload={priority ? "auto" : "metadata"}
           aria-hidden="true"
         />
       )}

@@ -16,7 +16,7 @@ export const hero = {
   primaryCta: "Prendre rendez-vous",
   secondaryCta: "Demander un rappel",
   media: {
-    poster: "/images/hero-poster.webp",
+    poster: "/videos/hero-poster.mp4",
     alt: "Technicien remplaçant le pare-brise d'une voiture dans un atelier",
   } satisfies MediaSource,
 };
@@ -140,7 +140,7 @@ export const comeToYou = {
   chips: ["À Domicile", "Au Travail", "Où que vous ayez besoin de nous"],
   cta: "Prendre rendez-vous",
   media: {
-    poster: "/images/come-to-you-poster.webp",
+    poster: "/videos/come-to-you.mp4",
     alt: "Technicien réparant le vitrage d'une voiture sur place",
   } satisfies MediaSource,
 };
