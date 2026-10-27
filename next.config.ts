@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    // Sources in public/images are exported at 2x the Figma node size; next/image serves 1x/2x from them.
+    formats: ["image/avif", "image/webp"],
+    qualities: [75, 85],
+  },
   turbopack: {
     rules: {
       "*.css": {

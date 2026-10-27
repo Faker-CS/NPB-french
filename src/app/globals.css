@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Design tokens extracted from Figma "Mecatronics" → page "final" → section "Npb french" (31:7999),
+ * root frame 31:3597 (1440 × 16557). Values come from the decoded local .fig (see PROGRESS.md).
+ * Blur tokens are the Figma blur radius / 2, which is the CSS standard-deviation equivalent.
+ */
+@theme {
+  /* Only the project palette is available as colour utilities. */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
+  /* Brand: Figma colour style "nrp theme" */
+  --color-brand: #2fa0a6;
+  --color-brand-deep: #127075;
+  --color-accent: #00dfeb;
+  --color-accent-alt: #00d8e3;
+  --color-accent-glow: #70f8ff;
+  --color-accent-bright: #06f3ff;
+  /* Only used by the form submit button and the "button" master's arrow (Phase 0, question 4: kept). */
+  --color-signal: #fa5b2e;
+
+  /* Text */
+  --color-ink: #232323;
+  --color-muted: #696d76;
+  --color-muted-dark: #969696;
+  --color-muted-darker: #a4a4a4;
+  --color-placeholder: #909090;
+  --color-snow: #fcfcfc;
+  --color-cream: #f5f3f0;
+
+  /* Light surfaces */
+  --color-surface: #f8f8f8;
+  --color-surface-alt: #f4f4f4;
+  --color-mist: #f6f6f6;
+  --color-tile: #f5f5f5;
+  --color-tile-line: #e6e6e6;
+  --color-field: #efefef;
+  --color-faq: #e5e5e5;
+  --color-slide: #c4c4c4;
+
+  /* Dark surfaces */
+  --color-night: #141414;
+  --color-night-card: #1c1c1c;
+  --color-night-form: #272727;
+  --color-teal-night: #0a1515;
+  --color-teal-chip: #0e1f1f;
+  --color-chip-line: #262626;
+  --color-line: #5b5b5b;
+
+  /* Ratings and the Google logo palette */
+  --color-star: #fcbd03;
+  --color-star-off: #d9d9d9;
+
+  /* Typography (families are wired in src/app/layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Figma uses HOOKRIDE Regular (not supplied yet). Anton is the stand-in; when the HOOKRIDE files
+     arrive, load them with next/font/local as --font-hookride and put that variable first here. */
+  --font-display: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  --font-alt: var(--font-roboto), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-lang: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --leading-display: 0.9;
+  --leading-body: 1.2;
+
+  /* Inter / Roboto scale (letter-spacing is 0 everywhere in the file) */
+  --text-eyebrow: 0.875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-chip: 0.875rem;
+  --text-chip--line-height: 1.25rem;
+  --text-body: 1rem;
+  --text-body--line-height: 1.2;
+  --text-title: 1.125rem;
+  --text-title--line-height: 1.2;
+
+  /* HOOKRIDE display scale. Headings are 78 px at 1440 and scale down fluidly. */
+  --text-display: clamp(2.75rem, 1.5rem + 3.9vw, 4.875rem);
+  --text-display--line-height: 0.9;
+  --text-form-title: clamp(2.5rem, 1.6rem + 2.8vw, 3.625rem);
+  --text-form-title--line-height: 1;
+  --text-price: 2.375rem;
+  --text-price--line-height: 0.9;
+  --text-slide-title: 1.75rem;
+  --text-slide-title--line-height: 0.9;
+  --text-card-display: 1.5rem;
+  --text-card-display--line-height: 0.9;
+
+  /* Oversized watermarks, proportional to the 1440 frame and capped at the Figma size. */
+  --text-watermark-rewards: min(14.57vw, 13.111rem);
+  --text-watermark-rewards--line-height: 1;
+  --text-watermark-footer: min(20.47vw, 18.427rem);
+  --text-watermark-footer--line-height: 0.9;
+
+  /* Layout: 1440 frame, 80 px gutters, 1280 content column */
+  --container-site: 80rem;
+  --breakpoint-xs: 22.5rem;
+
+  /* Radii */
+  --radius-check: 0.25rem;
+  --radius-button: 0.5rem;
+  --radius-tile: 0.625rem;
+  --radius-card: 1rem;
+  --radius-thumb: 1.375rem;
+  --radius-panel: 2rem;
+  --radius-form: 2.625rem;
+
+  /* Shadows: the only shadow in the file is the inner glow of "Réclamez maintenant" (31:3670). */
+  --inset-shadow-glow: inset 0 1px 30px var(--color-accent-glow);
+
+  /* Blurs (Figma radius / 2) */
+  --blur-nav: 9.55px;
+  --blur-pill: 9.8px;
+  --blur-eyebrow: 13.85px;
+  --blur-caption: 15.1px;
+  --blur-form: 8.15px;
+  --blur-form-panel: 87.9px;
+  --blur-rewards-glow: 180.65px;
+  --blur-sparkle-lg: 6.9px;
+  --blur-sparkle: 2px;
+  --blur-coin: 1px;
+  --blur-banknote: 1.4px;
+
+  /* Hover / focus feedback (not designed in Figma; approved default, see PROGRESS.md) */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
 }
