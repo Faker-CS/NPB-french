@@ -45,7 +45,7 @@ The file also opens **read-only in a browser without sign-in**, which works for 
 ## Design system (Phase 1)
 
 **Fonts**
-- Display: **HOOKRIDE Regular** in Figma (caps-only heavy condensed face): headings 78/0.9, watermarks, prices, slide titles. **Not supplied yet → stand-in Bebas Neue** (`--font-bebas-neue`, chosen 2026-10-27 by measuring: Figma "DOMMAGE, NOUS VOUS" ≈ 495 px at 78 px, Bebas Neue 523, Anton 653; Bebas gives Figma's line count on 3 of the 4 measured headings, Anton on 1). Bebas is lighter in weight than HOOKRIDE. To switch: add the files to `src/fonts`, load them with `next/font/local` as `--font-hookride`, and put that variable first in `--font-display`.
+- Display: **HOOKRIDE Regular** in Figma (caps-only heavy condensed face): headings 78/0.9, watermarks, prices, slide titles. **Not supplied yet → stand-in Bebas Neue** with `--tracking-display: -0.02em` (restores Figma's line breaks on every heading measured; reset it to 0 with the HOOKRIDE switch) (`--font-bebas-neue`, chosen 2026-10-27 by measuring: Figma "DOMMAGE, NOUS VOUS" ≈ 495 px at 78 px, Bebas Neue 523, Anton 653; Bebas gives Figma's line count on 3 of the 4 measured headings, Anton on 1). Bebas is lighter in weight than HOOKRIDE. To switch: add the files to `src/fonts`, load them with `next/font/local` as `--font-hookride`, and put that variable first in `--font-display`.
 - Text: **Inter** (variable, 400–800), line-height 1.2 → `font-sans` (default).
 - Alt: **Roboto** 300/400/500/700 (footer, consent, button master) → `font-alt`. **Manrope** 300 (language switch) → `font-lang`.
 

@@ -59,6 +59,9 @@
   /* Figma uses HOOKRIDE Regular (not supplied yet). Bebas Neue is the stand-in; when the HOOKRIDE files
      arrive, load them with next/font/local as --font-hookride and put that variable first here. */
   --font-display: var(--font-bebas-neue), Impact, "Arial Narrow", sans-serif;
+  /* Stand-in calibration: Bebas Neue is ~5 % wider than HOOKRIDE; -0.02em restores Figma's line breaks.
+     Set to 0 together with the HOOKRIDE switch (Figma letter-spacing is 0). */
+  --tracking-display: -0.02em;
   --font-alt: var(--font-roboto), var(--font-inter), ui-sans-serif, sans-serif;
   --font-lang: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
 
@@ -135,6 +138,12 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+@layer utilities {
+  .font-display {
+    letter-spacing: var(--tracking-display);
+  }
 }
 
 @layer base {

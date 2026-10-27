@@ -1,4 +1,15 @@
-// The landing sections are built in Phase 3 (see PROGRESS.md).
+import { HeroSection } from "@/components/sections/HeroSection";
+import { LocationsSection } from "@/components/sections/LocationsSection";
+import { OffersSection } from "@/components/sections/OffersSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+
 export default function Home() {
-  return <main id="contenu" />;
+  return (
+    <main id="contenu">
+      <HeroSection />
+      <OffersSection />
+      <LocationsSection />
+      <ServicesSection />
+    </main>
+  );
 }
