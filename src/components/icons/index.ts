@@ -22,3 +22,5 @@ export { GoogleIcon } from "./GoogleIcon";
 export { FacebookIcon } from "./FacebookIcon";
 export { InstagramIcon } from "./InstagramIcon";
 export { YoutubeIcon } from "./YoutubeIcon";
+export { MenuIcon } from "./MenuIcon";
+export { CloseIcon } from "./CloseIcon";

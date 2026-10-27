@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Anton, Inter, Manrope, Roboto } from "next/font/google";
+import { Bebas_Neue, Inter, Manrope, Roboto } from "next/font/google";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import "./globals.css";
 
@@ -26,9 +28,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-// Stand-in for HOOKRIDE Regular until the licensed files are supplied (see PROGRESS.md).
-const anton = Anton({
-  variable: "--font-anton",
+// Stand-in for HOOKRIDE Regular until the licensed files are supplied (see PROGRESS.md, D2):
+// caps-only and the closest width of the condensed Google faces (same line breaks on 3 of 4 headings).
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
@@ -42,9 +45,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${inter.variable} ${roboto.variable} ${manrope.variable} ${anton.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${roboto.variable} ${manrope.variable} ${bebasNeue.variable}`}>
       <body>
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <a
+            href="#contenu"
+            className="sr-only z-50 rounded-button bg-snow px-4 py-3 font-semibold text-brand focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+          >
+            Aller au contenu
+          </a>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );

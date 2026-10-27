@@ -24,13 +24,14 @@ export const ease = {
 } as const;
 
 /** Figma CUSTOM_SPRING on "Component 48" (1:1143): mass 1, stiffness 265.5, damping 15 (settles in ~977 ms). */
-export const coinSpring: Transition = { type: "spring", mass: 1, stiffness: 265.5, damping: 15 };
+export const tyreSpring: Transition = { type: "spring", mass: 1, stiffness: 265.5, damping: 15 };
 
 /** Durations and holds, in seconds. */
 export const duration = {
   offerFloat: 5, // 1:1132 ↔ 1:1134
   sparkleStep: 2, // 1:1137 → 1:1139 → 1:1141
-  coinHold: 5, // 1:1144 waits 5000 ms before resetting
+  tyreStep: 0.977, // Figma spring settle time; each step fires 1 ms after the previous one
+  tyreHold: 5, // 1:1144 waits 5000 ms before resetting
   pinPulseStep: 0.5, // 1:1170 → 1:1174 → 1:1178
   pinTooltip: 0.3, // 1:1209 mouse enter → 1:1221
   mapZoom: 0.3, // 1:1253 click → 1:1255
@@ -70,7 +71,7 @@ export const sparklePath = {
  * Tyre stack (1:1143, 134 × 141 frame): four tyres drop in one after another with the spring above,
  * then the stack holds 5 s and resets instantly. Each row is the y of image 34, 35, 36, 37 per state.
  */
-export const coinStackStates = [
+export const tyreStackStates = [
   [194.6, 170.4, 144.3, 235], // 1:1164 start (all below the frame)
   [184.6, 160.4, 14.3, 225], // 1:1159
   [164.6, 40.4, 14.3, 205], // 1:1154
