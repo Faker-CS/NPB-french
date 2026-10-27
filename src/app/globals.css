@@ -99,8 +99,6 @@
 
   /* Layout: 1440 frame, 80 px gutters, 1280 content column */
   --container-site: 80rem;
-  /* Header CTA + menu button need 375 px; below that the CTA moves into the menu. */
-  --breakpoint-xs: 23.4375rem;
 
   /* Radii */
   --radius-check: 0.25rem;

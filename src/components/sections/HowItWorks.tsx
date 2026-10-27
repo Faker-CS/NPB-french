@@ -4,7 +4,7 @@ import { motion, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { SectionIntro } from "@/components/ui/SectionIntro";
-import { duration, ease } from "@/lib/motion";
+import { duration, ease, inViewOnce } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
 /*
@@ -46,7 +46,7 @@ type HowItWorksProps = {
 
 export function HowItWorks({ eyebrow, title, description, steps, cta: ctaLabel, ctaHref }: HowItWorksProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.35 });
+  const inView = useInView(ref, inViewOnce);
   const reduce = useReducedMotion();
   const [step, setStep] = useState(0);
   const shown = reduce ? LAST_STEP : step;

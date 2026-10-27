@@ -33,7 +33,7 @@ export function RewardsSection() {
   return (
     <section id="parrainage" aria-labelledby="parrainage-title" className="mt-43.5">
       <Container>
-        <div className="relative isolate flex min-h-112.5 flex-col items-center justify-center overflow-hidden rounded-panel bg-night p-10 xl:mx-px">
+        <div className="relative isolate flex min-h-112.5 flex-col items-center justify-center overflow-hidden rounded-panel bg-night px-3 py-10 md:p-10 xl:mx-px">
           <div aria-hidden="true" className="absolute -z-10 opacity-2" style={decoration({ x: 7, y: -119.5, width: 1284, height: 1140 })}>
             {Array.from({ length: 5 }, (_, index) => (
               <p

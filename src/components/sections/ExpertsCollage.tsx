@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { placeNode } from "@/components/motion/FigmaFrame";
 import { ButtonLink } from "@/components/ui/Button";
 import { SectionIntro } from "@/components/ui/SectionIntro";
-import { collageStates, duration, ease } from "@/lib/motion";
+import { collageStates, duration, ease, inViewOnce } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
 /*
@@ -52,7 +52,7 @@ type ExpertsCollageProps = {
 export function ExpertsCollage({ eyebrow, title, description, photos, features, cta, ctaHref }: ExpertsCollageProps) {
   const ref = useRef<HTMLDivElement>(null);
   const clusterRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.35 });
+  const inView = useInView(ref, inViewOnce);
   const reduce = useReducedMotion();
   const [step, setStep] = useState(0);
   const [scale, setScale] = useState(1);

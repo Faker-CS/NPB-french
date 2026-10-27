@@ -33,8 +33,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3 px-4 py-2">
-          {/* Wrapped: cn() does not override the button's own inline-flex. Below 375 px (`xs`) the CTA lives in the menu. */}
-          <div className="hidden xs:block">
+          {/* Wrapped: cn() does not override the button's own inline-flex. Below `sm` the CTA lives in the menu. */}
+          <div className="hidden whitespace-nowrap sm:block">
             <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
           </div>
           <div className="xl:hidden">

@@ -96,8 +96,12 @@ export const collageStates = [
   [[460, 302], [585, 344], [367, 419], [492, 461]], // 1:1458 Group 6 (rest)
 ] as const;
 
-/** Scroll reveals (approved default: play once when in view, instead of Figma's mouse-enter proxy). */
-export const inViewOnce = { once: true, amount: 0.35 } as const;
+/**
+ * Scroll reveals (approved default: play once when in view, instead of Figma's mouse-enter proxy).
+ * Starts when the block's top passes 85 % of the viewport, so blocks taller than the screen (stacked on
+ * phones) still trigger.
+ */
+export const inViewOnce = { once: true, margin: "0px 0px -15% 0px" } as const;
 
 /** Opacity reveal used by the collage features, the steps and their CTAs (Figma: opacity 0 → 1, linear). */
 export const fadeIn: Variants = {

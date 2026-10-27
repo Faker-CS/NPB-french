@@ -38,7 +38,7 @@ The file also opens **read-only in a browser without sign-in**, which works for 
   - [x] `src/lib/motion.ts` (all Figma timings, easings, springs and keyframes) + `MotionProvider` (reduced motion)
 - [x] Phase 2: Components (2026-10-27, `tsc`, lint, build clean; checked on the dev-only `/kit` sheet against Figma at 1440 and for overflow at 320 / 375 / 768 / 1024 / 1280; see "Code map")
   - Cards (offer, service slide, benefit, step, Pourquoi, article, region, review) are built in Phase 3 with their section, each being used by one section only (same as the Ness Glass build).
-- [ ] Phase 3: Sections of `/` (one at a time, compared with Figma at 1440 px)
+- [x] Phase 3: Sections of `/` (2026-10-27): all 18 Figma blocks built in order, each measured against its Figma frame at 1440 px (positions within 1–4 px, see "Section map"), `tsc`, lint and build clean. No horizontal overflow at 320 / 375 / 768 / 1024 / 1280; mobile layouts checked visually; enquiry form validation and submit checked.
 
 ---
 
@@ -65,7 +65,7 @@ The file also opens **read-only in a browser without sign-in**, which works for 
 | `star` / `star-off` | `#fcbd03` / `#d9d9d9` | Ratings |
 
 **Type scale:** `text-eyebrow` 14, `text-chip` 14/20 px, `text-body` 16, `text-title` 18 (all 1.2); display `text-display` 78 (fluid, 0.9), `text-form-title` 58 (fluid, 1), `text-price` 38, `text-slide-title` 28, `text-card-display` 24; watermarks `text-watermark-rewards` 209.78 and `text-watermark-footer` 294.83 (scale with `vw`, capped at the Figma size). Letter-spacing is 0 everywhere.
-**Layout:** `max-w-site` = 1280 (1440 frame, 80 px gutters). Spacing uses Tailwind's 4 px scale (Figma gaps 4/8/16/24/32/40/80). Breakpoints: Tailwind defaults plus `xs` = 375 px (header CTA).
+**Layout:** `max-w-site` = 1280 (1440 frame, 80 px gutters). Spacing uses Tailwind's 4 px scale (Figma gaps 4/8/16/24/32/40/80). Breakpoints: Tailwind defaults (`sm` 640, `md` 768, `lg` 1024, `xl` 1280); desktop compositions from `xl`.
 **Radii:** `rounded-check` 4, `rounded-button` 8, `rounded-tile` 10, `rounded-card` 16, `rounded-thumb` 22, `rounded-panel` 32, `rounded-form` 42, pills `rounded-full` (Figma 45–52).
 **Blurs** (Figma radius ÷ 2): `nav` 9.55, `pill` 9.8, `eyebrow` 13.85, `caption` 15.1, `form` 8.15, `form-panel` 87.9, `rewards-glow` 180.65, `sparkle-lg` 6.9, `sparkle` 2, `tyre` 1, `banknote` 1.4.
 **Shadows:** only `inset-shadow-glow` (`inset 0 1px 30px #70f8ff`, "Réclamez maintenant"). The `0 4 #000/25 %` values on Figma blurs are Figma defaults, not shadows.
@@ -122,6 +122,36 @@ The file also opens **read-only in a browser without sign-in**, which works for 
 
 ---
 
+## Section map (Phase 3)
+
+`src/app/page.tsx` renders the sections in Figma order; content lives in `src/data/landing.ts` (typed, Figma text verbatim). Measured y at 1440 vs Figma; the small drift is Inter's 19.2 px line-height rounding.
+
+| # | Figma | Component | Anchor | y ours / Figma | Notes |
+|---|---|---|---|---|---|
+| 1 | `31:3598` hero | `HeroSection` + `ui/BackgroundMedia` | `#accueil` | 0 / 0 | poster until the MP4 arrives (D1) |
+| 2 | `31:3643` offers | `OffersSection`, `cards/OfferCard` | `#offres` | 904 / 904 | coin float, tyre spring, sparkles |
+| 3 | `31:3702` locations | `LocationsSection`, `LocationsMap`, `CentreSearch` | `#centres` | 1960 / 1960 | pin pulse, "Parise" hover label, click zoom ×3.572 |
+| 4 | `31:3798` services | `ServicesSection`, `ServicesCarousel` | `#services` | 2686 / 2686 | 2 slides, counter "/02" (D14) |
+| 5 | `31:3731` insurance | `InsuranceSection` | `#assurance` | 3542 / 3541 | |
+| 6 | `31:3847` collage | `ExpertsSection`, `ExpertsCollage` | `#expertise` | 4327 / 4325 | 5-step sequence in view (D6) |
+| 7 | `31:3848` steps | `HowItWorksSection`, `HowItWorks` | `#comment-ca-marche` | 5154 / 5152 | 4-step reveal in view (D6) |
+| 8 | `31:3870` à domicile | `ComeToYouSection` | `#a-domicile` | 5983 / 5981 | portrait poster (D1) |
+| 9 | `31:3849` Pourquoi | `WhySection`, `WhyCards` | `#pourquoi` | 6846 / 6844 | icon slide in view (D6) |
+| 10–11 | `31:3903` + `31:3917` | `RepairOrReplaceSection` | `#reparer-ou-remplacer` | 8156 / 8153 | Figma clips the replacement card's last 11 px; kept on desktop |
+| 12 | `31:4050` help | `NeedHelpSection` | `#aide` | 9854 / 9851 | tiles are links (D11) |
+| 13 | `31:4098` referral | `RewardsSection` | `#parrainage` | 10479 / 10476 | hands / banknotes hidden below `md` |
+| 14 | `31:4129` articles | `ArticlesSection` | `#blog` | 11033 / 11030 | links stay on `#blog` (no article pages, D3) |
+| 15 | `31:4201` regions | `CoverageSection` | `#regions` | 12004 / 12001 | |
+| 16 | `31:4314` reviews | `ReviewsSection`, `ReviewsCarousel`, `cards/ReviewCard` | `#avis` | 13444 / 13440 | autoplay from `lg`, swipe row below (D15) |
+| 17 | `31:4330` partners | `PartnersSection` (`motion/Marquee`) | `#partenaires` | — | luminosity-blend logos |
+| 18 | `31:4346` enquiry | `ContactSection`, `ContactForm` | `#contact` | 14515 / 14511 | no backend (D16) |
+| 19 | `31:4387` FAQ | `FaqSection` (`ui/Accordion`) | `#faq` | 15415 / 15411 | placeholders for 3 answers (D17) |
+| — | `31:4408` footer | `layout/SiteFooter` | — | 15998 / 15945 | +48 px from two wrapped FAQ questions (D12) |
+
+Page height 16624 px vs 16557 in Figma (+67: FAQ wrapping 48, roundings).
+
+---
+
 ## Motion inventory (Phase 0 → `src/lib/motion.ts`)
 
 No sticky/fixed/scroll behaviours and no page transitions in the file (single route, so no `template.tsx` transition is added).
@@ -161,4 +191,8 @@ All motion runs under `<MotionConfig reducedMotion="user">`; looping and auto-ad
 - **D12 · FAQ wrapping.** Figma's closed questions are auto-width (never wrap; the last one is truncated with an ellipsis). Here questions wrap, so no text is cut off; heights match Figma whenever the question fits on one line.
 - **D13 · Mobile menu.** Not designed. Below `xl` the nav pill becomes a hamburger (glass treatment of the "button 2" master) opening a modal `<dialog>`. `MenuIcon` comes from the same Figma file (Ness Glass header); `CloseIcon` is drawn to match it.
 - **D14 · Services counter.** User decision 2026-10-27: show "/02" (2 designed slides).
-- **Open · FAQ answers.** Only the first FAQ item has an answer in Figma; the three closed items have questions only. Needed before Phase 3 builds the FAQ.
+- **D15 · Reviews.** Figma has 12 copies of one review; only the first page of 4 is translated, so the French text is used on all 12. The carousel auto-plays from `lg` (hold 2 s, slide 1 s), pauses on hover / focus / hidden tab, and is off with reduced motion; below `lg` it is a swipeable scroll-snap row. The French quote takes 3 lines, so cards grow and the 258 px carousel clips their bottom padding, as Figma does.
+- **D16 · Enquiry form.** No backend: native validation (all fields except the message required, 5-digit postal code, consent), then reset and a polite status message (not designed: plain snow text under the button).
+- **D17 · FAQ answers.** Only the first answer exists in Figma; the other three show the visible placeholder "[Réponse à fournir]" (user decision 2026-10-27) until the copy is supplied.
+- **D18 · Header CTA.** Below `sm` (640 px) "Prendre rendez-vous" moves into the menu (it wrapped to 3 lines at 375 px); the custom `xs` breakpoint is gone.
+- **D19 · Reveal triggers.** `inViewOnce` starts when a block's top passes 85 % of the viewport (a ratio threshold never fired for blocks taller than a phone screen).
