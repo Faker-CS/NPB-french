@@ -250,3 +250,72 @@ export const coverage = {
     "South-East": "/images/region-south-east.webp",
   } as Record<string, string>,
 };
+
+export const reviews = {
+  eyebrow: "Vrais clients",
+  title: "UN BON SERVICE PARLE DE LUI-MÊME.",
+  description:
+    "Vraies expériences de clients qui nous ont choisis pour un service de vitrage automobile rapide, professionnel et sans tracas.",
+  // Figma has 12 identical placeholder cards (3 pages of 4); only the first page is translated, the French
+  // text is used for all of them (PROGRESS.md, D15).
+  review: {
+    quote: "« Le café est excellent et le service rapide. De première qualité. »",
+    author: "Tumar Baris",
+    date: "Il y a 10 mois",
+    rating: 4,
+    avatar: "/images/reviewer-avatar.webp",
+  },
+  pages: 3,
+  perPage: 4,
+};
+
+export const partners = {
+  eyebrow: "nos partenaires",
+  title: "MARQUES D'IBI GROUP",
+  description:
+    "Fiable pour les grandes marques et partenaires de l'industrie pour fournir des solutions de vitrage automobile professionnelles et fiables.",
+  // Logo box inside its 214 × 100 tile (Figma "our partner" 1:1055); the first one is top-left aligned.
+  logos: [
+    { name: "Ness Glass", src: "/images/partner-nessglass.webp", width: 194, height: 73, align: "start" },
+    { name: "Oxxo Glass", src: "/images/partner-oxxoglass.webp", width: 143, height: 68, align: "center" },
+    { name: "Ness Pare-Brise", src: "/images/partner-npb.webp", width: 127, height: 73, align: "center" },
+    { name: "Nexxy Tire", src: "/images/partner-nexxytire.webp", width: 169, height: 69, align: "center" },
+  ],
+} as const;
+
+export const contactForm = {
+  label: "Enquire Form",
+  // Figma sets this in GC EPICPRO Demo, which lacks "é"; it uses the display face (PROGRESS.md, D2).
+  title: "Faites réparer votre pare-brise sans tracas.",
+  image: { src: "/images/contact-technician.webp", alt: "Technicien au travail sur un pare-brise" },
+  fields: {
+    firstName: "Prénom",
+    lastName: "Nom de famille",
+    phone: "Numéro de téléphone",
+    email: "Email",
+    postalCode: "Code postal",
+    message: "Dites-nous comment nous pouvons vous aider...",
+  },
+  consent:
+    "J'accepte les [Conditions Générales] fournies par l'entreprise. En fournissant mon numéro de téléphone, j'accepte de recevoir des messages SMS et des appels de l'entreprise.",
+  submit: "SEND MY REQUEST",
+  // Not designed in Figma: confirmation after a (simulated) submit, PROGRESS.md D16.
+  success: "Merci ! Votre demande a bien été envoyée. Notre équipe vous recontacte rapidement.",
+};
+
+export const faq = {
+  eyebrow: "Questions Fréquemment Posées",
+  title: "VOUS AVEZ DES QUESTIONS ?\nNOUS AVONS DES RÉPONSES.",
+  description:
+    "Obtenez des réponses claires et rapides à vos questions sur la réparation, le remplacement, l'assurance et le service de pare-brise.",
+  // Only the first answer exists in Figma; the others are visible placeholders until supplied.
+  items: [
+    {
+      question: "COMBIEN DE TEMPS APRÈS L'INSTALLATION PUIS-JE CONDUIRE ?",
+      answer: "Généralement 1 à 2 heures, permettant à l'adhésif de durcir correctement et d'assurer votre sécurité sur la route.",
+    },
+    { question: "PUIS-JE LAVER MA VOITURE APRÈS LE REMPLACEMENT ?", answer: "[Réponse à fournir]" },
+    { question: "MON CAPTEUR DE PLUIE FONCTIONNERA-T-IL TOUJOURS ?", answer: "[Réponse à fournir]" },
+    { question: "LE REMPLACEMENT A-T-IL UN IMPACT SUR LA GARANTIE DE MON VÉHICULE ?", answer: "[Réponse à fournir]" },
+  ],
+};
