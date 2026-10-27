@@ -27,6 +27,8 @@ type SectionIntroProps = {
   titleClassName?: string;
   /** Per-section paragraph width and alignment from Figma. */
   descriptionClassName?: string;
+  /** Paragraph colour when it differs from the tone default ("Nous venons à vous" uses muted-darker). */
+  descriptionColor?: string;
   className?: string;
 };
 
@@ -40,6 +42,7 @@ export function SectionIntro({
   titleId,
   titleClassName,
   descriptionClassName,
+  descriptionColor,
   className,
 }: SectionIntroProps) {
   const heading = (
@@ -59,7 +62,7 @@ export function SectionIntro({
     <p
       className={cn(
         "px-4 py-2 font-medium",
-        tone === "dark" ? "text-muted-dark" : "text-muted",
+        descriptionColor ?? (tone === "dark" ? "text-muted-dark" : "text-muted"),
         layout === "center" && "text-center",
         descriptionClassName,
       )}

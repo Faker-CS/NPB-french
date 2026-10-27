@@ -82,3 +82,82 @@ export const services = {
     { id: "windshield", label: "Windshield", title: "Cracked? WE'LL MAKE IT CLEAR AGAIN.", image: "/images/service-windshield.webp", alt: "Technicien remplaçant un pare-brise" },
   ],
 };
+
+export const insurance = {
+  eyebrow: "Assistance Assurance",
+  title: "MOINS DE PAPIERS.\nMOINS DE COÛT.\nPLUS DE TRANQUILLITÉ D'ESPRIT.",
+  description: "Faites remplacer votre pare-brise à domicile avec notre service national.",
+  benefits: [
+    { icon: "insurers", label: "Toutes les compagnies d'assurance" },
+    { icon: "euro", label: "0 € d'avance" },
+    { icon: "bolt", label: "Service rapide" },
+    { icon: "document", label: "Zéro paperasse" },
+    { icon: "map", label: "Service national" },
+    { icon: "lock", label: "Garantie d'installation à vie" },
+  ],
+  cta: "Book appointment",
+} as const;
+
+export const experts = {
+  eyebrow: "Experts en verre automobile",
+  title: "VOTRE VERRE. NOTRE EXPERTISE.",
+  description:
+    "Réparation et remplacement de verre automobile professionnels, disponibles dans nos centres ou où que vous soyez.",
+  photos: [
+    { src: "/images/experts-1.webp", alt: "Technicien posant un pare-brise" },
+    { src: "/images/experts-2.webp", alt: "Pare-brise en cours de remplacement" },
+    { src: "/images/experts-3.webp", alt: "Réparation d'un impact sur un pare-brise" },
+    { src: "/images/experts-4.webp", alt: "Technicien au travail dans l'atelier" },
+  ],
+  features: [
+    { title: "Service rapide", text: "Reprenez la route rapidement." },
+    { title: "Verre de qualité", text: "Verre approuvé répondant aux normes du fabricant." },
+    { title: "Qualité garantie", text: "Installation professionnelle en qui vous pouvez avoir confiance." },
+    { title: "Service mobile", text: "Nous venons directement à vous." },
+  ],
+  // Not overridden in the French instance (PROGRESS.md, D8).
+  cta: "Book appointment",
+};
+
+export const howItWorks = {
+  eyebrow: "Comment ça marche",
+  title: "VOUS ÊTES À 3 ÉTAPES DE RETROUVER LA ROUTE.",
+  description:
+    "Réparation et remplacement de verre automobile professionnels, disponibles dans nos centres ou où que vous ayez besoin de nous.",
+  steps: [
+    { number: "01", title: "Contactez-nous", text: "Dites-nous ce qui s'est passé et soumettez votre demande." },
+    { number: "02", title: "Nous vous contactons", text: "Un expert de Ness Pare-Brise vous contacte pour comprendre vos besoins." },
+    { number: "03", title: "Prenez votre rendez-vous", text: "Choisissez votre emplacement et recevez un service professionnel rapide." },
+  ],
+  cta: "Réserver un rendez-vous",
+};
+
+export const comeToYou = {
+  eyebrow: "Nous venons à vous",
+  title: "VOTRE VOITURE\nN'A PAS BESOIN\nde SE DÉPLACER.",
+  description:
+    "Pare-brise, vitre latérale, lunette arrière ou rétroviseurs — nos spécialistes s'occupent du vitrage de votre véhicule.",
+  chips: ["À Domicile", "Au Travail", "Où que vous ayez besoin de nous"],
+  cta: "Prendre rendez-vous",
+  media: {
+    poster: "/images/come-to-you-poster.webp",
+    alt: "Technicien réparant le vitrage d'une voiture sur place",
+  } satisfies MediaSource,
+};
+
+export const why = {
+  eyebrow: "Pourquoi Ness Pare-Brise ?",
+  title: "SERVICE RAPIDE. MAINS D'EXPERT.\nPAS DE TRACAS INUTILES.",
+  description:
+    "Service de vitrage automobile professionnel avec des rendez-vous rapides, une installation experte et une expérience sans tracas du début à la fin.",
+  // Image boxes are the Figma nodes in the 341 × 385 card (final state 1:1978).
+  cards: [
+    { title: "Expertise", text: "Spécialistes qualifiés utilisant un équipement professionnel.", image: "/images/why-expertise.webp", box: { x: 200, y: 97, width: 150, height: 175 } },
+    { title: "Vitesse", text: "Réparations en 30 minutes. \nRemplacements en moins de 2 heures.", image: "/images/why-speed.webp", box: { x: 183, y: 95, width: 164, height: 179 } },
+    // Figma has an empty text node before this title, which pushes it 10 px right.
+    { title: "Soutien aux assurances", text: "Nous simplifions le processus avec votre compagnie d'assurance.", image: "/images/why-insurance.webp", box: { x: 191, y: 112, width: 150, height: 161 }, titleIndent: true },
+    { title: "Garantie à vie", text: "Installation professionnelle soutenue \npar notre garantie.", image: "/images/why-guarantee.webp", box: { x: 184.5, y: 117, width: 151, height: 151 } },
+    { title: "Service mobile", text: "Nous venons directement chez vous \nou sur votre lieu de travail.", image: "/images/why-mobile.webp", box: { x: 181.5, y: 108, width: 155, height: 154 } },
+  ],
+  cta: "Prendre rendez-vous",
+};
